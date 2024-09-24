@@ -1,0 +1,25 @@
+﻿@model EmployeeViewModel
+@{
+}
+
+<h1>Employee Update</h1>
+
+<br />
+<br />
+
+<form asp-action="Update" class="form-group" enctype="multipart/form-data">
+  
+    <partial name="PartialViews/EditCreateEmployeePartialView" model="Model" />
+
+    <input type="text" asp-for="ImageName" hidden />
+
+
+    </form>
+
+
+@section Validation {
+    <script src="~/lib//jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+

@@ -1,0 +1,27 @@
+﻿@model RoleViewModel
+@{
+}
+
+<h1>User Update</h1>
+
+<br />
+<br />
+
+<form asp-action="Update" class="form-group" enctype="multipart/form-data">
+  
+    <partial name="PartialViews/CreateEditRolePartialView" model="Model" />
+
+    <a asp-action="AddOrRemoveUserRoles" asp-route-id=@Model.Id class="btn btn-success">Add/Remove User Roles</a>
+    <input type="submit" value="Create" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-light">Back To List </a>
+
+
+</form>
+
+
+@section Validation {
+    <script src="~/lib//jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+

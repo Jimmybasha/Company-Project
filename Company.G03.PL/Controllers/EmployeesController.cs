@@ -6,13 +6,16 @@ using Company.G03.DAL.Model;
 using Company.G03.PL.Helper;
 using Company.G03.PL.Mapping;
 using Company.G03.PL.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
 using System.Collections.ObjectModel;
 
 namespace Company.G03.PL.Controllers
 {
-    public class EmployeesController : Controller
+	[Authorize]
+
+	public class EmployeesController : Controller
     {
         //private readonly IEmployeeRepository employeeRepo;
         //private readonly IDepartmentRepository departmentRepository;

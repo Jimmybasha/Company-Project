@@ -2,9 +2,11 @@
 using Company.G03.DAL.Interfaces;
 using Company.G03.DAL.Model;
 using Company.G03.BLL;
+using Microsoft.AspNetCore.Authorization;
 namespace Company.G03.PL.Controllers
 {
-    public class DepartmentsController : Controller
+	[Authorize]
+	public class DepartmentsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         public DepartmentsController(IUnitOfWork UnitOfWork)

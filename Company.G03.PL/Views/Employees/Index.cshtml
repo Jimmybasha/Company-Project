@@ -104,7 +104,7 @@
                     <td>@employee.PhoneNumber </td>
                     <td>@Html.DisplayFor(M => employee.IsActive) </td>
 
-                    <partial name="_ButtonsPartialView" model="employee.Id" />
+                    <partial name="_ButtonsPartialView" model="employee.Id.ToString()" />
 
 
                 </tr>

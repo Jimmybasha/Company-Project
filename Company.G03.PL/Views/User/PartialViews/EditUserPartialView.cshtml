@@ -1,0 +1,36 @@
+﻿@model UserViewModel
+
+<form asp-action="Update">
+<div>
+    <label class="col-form-label" asp-for=@Model.Username>Username</label>
+    <input class="form-control" type="type" asp-for=@Model.Username />
+    <span asp-validation-for="Username" class="alert-danger"></span>
+
+</div>
+
+<div>
+    <label class="col-form-label" asp-for=@Model.Email>Email</label>
+    <input class="form-control" type="email" asp-for=@Model.Email />
+    <span asp-validation-for="Email" class="alert-danger"></span>
+</div>
+
+<div>
+    <label class="col-form-label" asp-for=@Model.FirstName>FirstName</label>
+    <input class="form-control" type="type" asp-for=@Model.FirstName />
+    <span asp-validation-for="FirstName" class="alert-danger"></span>
+</div>
+
+<div>
+    <label class="col-form-label" asp-for=@Model.LastName>LastName</label>
+    <input class="form-control" type="type" asp-for=@Model.LastName />
+    <span asp-validation-for="LastName" class="alert-danger"></span>
+</div>
+
+
+
+<div>
+    <input type="submit" class="btn btn-primary" value="Edit" />
+    <a asp-action="Index" class="btn btn-primary">Back To List</a>
+</div>
+</form>
+

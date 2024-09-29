@@ -5,6 +5,8 @@ using Company.G03.DAL.Data.Context;
 using Company.G03.DAL.Interfaces;
 using Company.G03.DAL.Model;
 using Company.G03.PL.Mapping;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Company.G03.PL
@@ -18,12 +20,36 @@ namespace Company.G03.PL
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+      
+
+         
+
+
             builder.Services.AddDbContext<ApppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             }
             );
-            builder.Services.AddAutoMapper(typeof(EmployeeProfile));
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = false; // No digits required
+                options.Password.RequireLowercase = false; // No lowercase letters required
+                options.Password.RequireUppercase = false; // No uppercase letters required
+                options.Password.RequireNonAlphanumeric = false; // No special characters required
+                options.Password.RequiredLength = 1; // Minimum length can be set to 1
+                options.Password.RequiredUniqueChars = 0; // No unique character requirement
+            }).AddEntityFrameworkStores<ApppDbContext>().AddDefaultTokenProviders();
+
+			builder.Services.ConfigureApplicationCookie(config =>
+			{
+				config.LoginPath = "/Account/SignIn";
+                config.AccessDeniedPath = "/Account/AccessDenied";
+
+			});
+
+
+			builder.Services.AddAutoMapper(typeof(EmployeeProfile));
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
             var app = builder.Build();
 
@@ -40,6 +66,7 @@ namespace Company.G03.PL
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
@@ -47,6 +74,7 @@ namespace Company.G03.PL
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+
         }
     }
 }

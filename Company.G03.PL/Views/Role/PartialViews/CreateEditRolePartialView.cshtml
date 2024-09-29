@@ -1,0 +1,8 @@
+﻿@model RoleViewModel
+
+<div>
+    <label class="col-form-label" asp-for=@Model.RoleName>RoleName</label>
+    <input class="form-control" type="type" asp-for=@Model.RoleName />
+    <span asp-validation-for="RoleName" class="alert-danger"></span>
+</div>
+

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Company.G03.DAL.Data.Context
 {
-    public class ApppDbContext:IdentityDbContext
+    public class ApppDbContext:IdentityDbContext<ApplicationUser>
     {
 
         public ApppDbContext(DbContextOptions<ApppDbContext> options):base(options)
@@ -34,9 +34,9 @@ namespace Company.G03.DAL.Data.Context
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
 
-        public DbSet<IdentityUser> Users { get; set; }
+        //public DbSet<IdentityUser> Users { get; set; }
 
-        public DbSet<IdentityRole> Roles { get; set; }
+        //public DbSet<IdentityRole> Roles { get; set; }
 
 
     }

@@ -1,10 +1,12 @@
 using Company.G03.PL.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace Company.G03.PL.Controllers
 {
-    public class HomeController : Controller
+    [Authorize]
+	public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
